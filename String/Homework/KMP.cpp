@@ -1,5 +1,26 @@
+#include "KMP.h"
 #include <iostream>
-int main()
+
+iString::iString()
 {
-    return 0;
+    head = new strNode;
+    head->chdata = NULL;
+    head->next = NULL;
+    head->succ = NULL;
+}
+
+void iString::next()
+{
+    strNode *i, *j;
+    i = head->succ;
+    j = head;
+
+    i = head; //First one unmatch
+    while (i->succ)
+    {
+        if (j == head){
+            i=i->succ;
+            j=j->succ;
+        }
+    }
 }

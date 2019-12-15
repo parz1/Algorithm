@@ -11,6 +11,7 @@ class iString
 public:
     iString(){};  //Constructor
     ~iString(){}; //Destructor
+    void next(); //KMP next function. Homework 4-28
 private:
     strNode *head;
 };
