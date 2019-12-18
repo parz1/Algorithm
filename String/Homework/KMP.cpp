@@ -6,8 +6,9 @@ iString::iString()
 {
     head = new strNode;
     head->chdata = '*';
-    head->next = NULL;
+    head->next = head;
     head->succ = NULL;
+    std::cout << "Start" << std::endl;
 }
 
 iString::~iString()
@@ -35,7 +36,6 @@ void iString::next()
         }
         else
         {
-            //j = j->next; //j置零？
             j = head;
         }
     }
@@ -48,7 +48,7 @@ bool iString::assign(char *s)
     {
         return false;
     }
-    head->succ = head->next = NULL;
+    head->succ = head->next = head;
 
     strNode *prevNode = (strNode *)malloc(sizeof(strNode));
     if (!prevNode)
@@ -65,7 +65,7 @@ bool iString::assign(char *s)
         prevNode->succ = node;
         node->chdata = s[i];
         node->succ = NULL;
-        node->next = head;
+        node->next = prevNode;
         prevNode = node;
     }
     return true;
@@ -90,7 +90,50 @@ void iString::printNext()
     while (p->succ)
     {
         p = p->succ;
-        std::cout << p->next->chdata;
+        std::cout << p->next->succ->chdata;
     }
     std::cout << std::endl;
+}
+
+strNode *iString::headp()
+{
+    return head;
+}
+
+int iString::kmpSearch(iString *t)
+{
+    int counter = 0;
+    strNode *i = head, *j = t->headp();
+    strNode *p, *k;
+    while (i && j)
+    {
+        if (j == t->headp() || i->chdata == j->chdata)
+        {
+            std::cout << j->chdata << std::endl;
+            i = i->succ;
+            j = j->succ;
+        }
+        else
+        {
+            j = j->next;
+            if (j == t->headp())
+            {
+                std::cout << "match again!" << std::endl;
+                p = i;
+            }
+        }
+    }
+    counter = 0;
+    if (!j)
+    {
+        for (k = head->succ; k != p; k = k->succ, counter++)
+            ;
+        std::cout << "YES" << std::endl;
+        return counter;
+    }
+    else
+    {
+        std::cout << "NO" << std::endl;
+    }
+    return 0;
 }
