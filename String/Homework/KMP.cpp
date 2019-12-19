@@ -109,7 +109,6 @@ int iString::kmpSearch(iString *t)
     {
         if (j == t->headp() || i->chdata == j->chdata)
         {
-            std::cout << j->chdata << std::endl;
             i = i->succ;
             j = j->succ;
         }
@@ -118,7 +117,7 @@ int iString::kmpSearch(iString *t)
             j = j->next;
             if (j == t->headp())
             {
-                std::cout << "match again!" << std::endl;
+                //std::cout << "match again!" << std::endl;
                 p = i;
             }
         }
@@ -126,14 +125,14 @@ int iString::kmpSearch(iString *t)
     counter = 0;
     if (!j)
     {
-        for (k = head->succ; k != p; k = k->succ, counter++)
+        for (k = head; k != p; k = k->succ, counter++)
             ;
-        std::cout << "YES" << std::endl;
+        //std::cout << "YES" << std::endl;
         return counter;
     }
-    else
-    {
-        std::cout << "NO" << std::endl;
-    }
+    // else
+    // {
+    //     std::cout << "NO" << std::endl;
+    // }
     return 0;
 }

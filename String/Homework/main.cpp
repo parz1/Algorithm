@@ -13,7 +13,7 @@ int main()
     //str.next();
     mstr.next();
     str.print();
-    str.printNext();
+    //str.printNext();
     mstr.print();
     mstr.printNext();
     std::cout << str.kmpSearch(&mstr) << std::endl;
