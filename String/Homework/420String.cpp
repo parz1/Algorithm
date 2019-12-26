@@ -22,7 +22,7 @@ int main()
 void DelStr(char *src, char *dst)
 {
     char *p = src;
-    char *q = dst;
+    char *q = dst; 
     int dstLen;
     dstLen = strlen(dst);
     while (*src != EOF)
