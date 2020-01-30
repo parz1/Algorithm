@@ -9,9 +9,15 @@ public:
 class iString
 {
 public:
-    iString(){};  //Constructor
-    ~iString(){}; //Destructor
+    iString();   //Constructor
+    ~iString();  //Destructor
     void next(); //KMP next function. Homework 4-28
+    bool assign(char *);
+    void print();
+    void printNext();
+    int kmpSearch(iString *);
+    strNode* headp();
+
 private:
     strNode *head;
 };
